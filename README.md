@@ -21,9 +21,13 @@ This app helps users to find their perfect dog match.
 * react-dom : A library that allows React to interact with the DOM;
 * react-scripts : A library that allows us to run create-react-app commands.
 
-### Executing Program
+### This App is live [here](http://PranavNaik77.github.io/Fetch-Frontend-Take-Home-Exercise)
 
-* Clone this repository in your favorite editor
+### Running App Locally
+
+* Clone this repository.
+* Run ```npm start```
+* Open http://localhost:3000 to view it in your browser.
 
 ## Screenshots
 

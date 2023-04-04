@@ -1,6 +1,6 @@
 # Fetch Rewards Dog Finder
 
-This app helps user to browse dogs of their choices.
+This app helps users to find their perfect dog match.
 
 ## Description
 
@@ -9,7 +9,9 @@ This app helps user to browse dogs of their choices.
 * User can search dogs by breed, state, city (in the US) and maximum/minimum age. They can also sort the dogs in ascending/descending order.
 * User can select multiple dogs from the dashboard and the app will find a perfect match for them.
 
-![Logo.png](src%2FResources%2FImages%2FLogo.png)
+## Logo
+![Logo.png](src%2FScreenshots%2FLogo.png)
+
 
 ## Getting Started
 

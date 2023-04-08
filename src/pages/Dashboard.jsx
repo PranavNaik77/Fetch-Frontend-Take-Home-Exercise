@@ -69,16 +69,16 @@ function Dashboard(props) {
     }
 
     const fetchNextPage = () => {
-        fetchDogData(nextPageQuery);
+        fetchDogData(nextPageQuery + `sort=breed:${selectedSort.value}&`);
     }
 
     const fetchPrevPage = () => {
-        fetchDogData(previousPageQuery);
+        fetchDogData(previousPageQuery + `sort=breed:${selectedSort.value}&`);
     }
 
     const fetchPage = (pageNumber) => {
         const from = (pageNumber - 1) * 25;
-        fetchDogData(currentPageQuery+'from='+from);
+        fetchDogData(currentPageQuery+`sort=breed:${selectedSort.value}&`+'from='+from);
     }
 
     const getZipCodes = async () => {
@@ -130,6 +130,7 @@ function Dashboard(props) {
             }
         }
         const query = getSearchQuery(zipCodes);
+        console.log(query);
         setCurrentPageQuery(query);
         fetchDogData(query);
     }

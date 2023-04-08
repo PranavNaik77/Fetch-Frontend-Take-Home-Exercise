@@ -32,6 +32,7 @@ function Dashboard(props) {
     const [currentPageQuery,setCurrentPageQuery] = useState(DEFAULT_SEARCH_QUERY);
     const [minimumAge, setMinimumAge] = useState(DEFAULT_MIN_AGE);
     const [maximumAge, setMaximumAge] = useState(DEFAULT_MAX_AGE);
+    const [ageAlert, setAgeAlert] = useState(false);
     const [show, setShow] = useState(false);
     const [selectedSort, setSelectedSort] = useState(SORT_BY[0]);
     const [alert, setAlert] = useState(false);
@@ -110,6 +111,11 @@ function Dashboard(props) {
     }
 
     const handleSearch = async () => {
+        if(minimumAge.value > maximumAge.value){
+            setAgeAlert(true);
+            return;
+        }
+        setAgeAlert(false);
         if (selectedStates.length > 0 && !selectedcity) {
             setAlert(true);
             return;
@@ -150,6 +156,11 @@ function Dashboard(props) {
                         value={[maximumAge]}
                         onChange={setMaximumAge}
                     />
+                    {ageAlert && <Alert variant="danger" onClose={() => setAgeAlert(false)} dismissible>
+                        <p>
+                            Maximum Age Cannot be less than Minimum Age
+                        </p>
+                    </Alert>}
                     <FilterName name='Sort By' xs={12}/>
                     <FetchRewardDropdown
                         options={SORT_BY}
@@ -224,18 +235,21 @@ function Dashboard(props) {
                         <span className="visually-hidden">Loading...</span>
                     </Spinner>
                 </div>
-            ) : (<>
-                <DogData dogs={dogs}
-                    selectedCards={selectedCards}
-                    setSelectedCards={setSelectedCards}
-                />
+            ) : (
+                <div>
+                    <DogData dogs={dogs}
+                        selectedCards={selectedCards}
+                        setSelectedCards={setSelectedCards}
+                    />
+                </div>
+            )}
                 <FetchRewardPagination
                     onPrevClick={fetchPrevPage}
                     onNextClick={fetchNextPage}
                     onPageChange={fetchPage}
                     total={total}
+                    hidden={isLoading}
                 />
-            </>)}
         </div>
     );
 }

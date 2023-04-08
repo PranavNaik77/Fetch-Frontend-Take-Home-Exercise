@@ -54,7 +54,7 @@ function FetchRewardPagination (props) {
     }
 
     return (
-        <Pagination className="page-footer">
+        <Pagination className="page-footer" hidden={props.hidden}>
             <Pagination.Prev onClick={handlePrevClick}/>
             {renderItem()}
             <Pagination.Next onClick={handleNextClick}/>

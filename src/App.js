@@ -23,7 +23,7 @@ export default function App() {
     }).catch(e => {
       console.log(e);
       setIsLoggedIn(false);
-      navigate('/');
+      navigate('/login');
     });
   }
 
@@ -38,9 +38,12 @@ export default function App() {
 
   return (
       <>
-        <NavigationBar loggedIn={isLoggedIn} onLogout={() => setIsLoggedIn(false)}/>
+        <NavigationBar loggedIn={isLoggedIn} onLogout={() => {
+          setIsLoggedIn(false);
+          navigate('/login');
+        }}/>
         <Routes>
-          <Route exact path="/" element={<Login onLogin={() => setIsLoggedIn(true)}/>} />
+          <Route exact path="/login" element={<Login onLogin={() => setIsLoggedIn(true)}/>} />
           <Route exact path="/dashboard" element={<Dashboard findMatch={setDogs}/>}/>
           <Route exact path="/dogfound" element={<DogFound selectedDog={selectedDogs} toDashboard={toDashboard}/>}/>
         </Routes>
